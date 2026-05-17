@@ -1,0 +1,100 @@
+The process by which cells divide to produce two identical daughter cells is called
+The double helix structure of DNA was first described by
+Photosynthesis converts carbon dioxide and water into glucose using
+The organelle responsible for ATP production in the cell is the
+DNA replication occurs during the phase known as
+What is the basic unit of heredity?
+Which organ produces insulin in the human body?
+What type of bond holds the two strands of DNA together?
+How many chromosomes does a typical human cell contain?
+What process allows organisms to maintain a stable internal environment?
+The derivative of sin(x) with respect to x is
+A prime number is a natural number greater than 1 that
+The Pythagorean theorem states that in a right triangle the square of the hypotenuse equals
+The fundamental theorem of calculus establishes a relationship between
+Euler's identity states that e raised to the power of i times pi equals
+What is the sum of the interior angles of a triangle?
+How many sides does a regular hexagon have?
+What is the value of pi rounded to four decimal places?
+What is the derivative of x squared?
+What is the result of integrating the constant 1 with respect to x?
+The speed of light in a vacuum is approximately
+Newton's second law states that force equals mass multiplied by
+Einstein's theory of special relativity introduced the concept that
+The law of conservation of energy states that energy can neither be created nor
+The uncertainty principle, formulated by Heisenberg, states that one cannot simultaneously know with precision both the
+What is the SI unit of electric current?
+Which subatomic particle carries a negative electric charge?
+What force keeps planets in orbit around the Sun?
+What is the approximate wavelength range of visible light in nanometres?
+What phenomenon causes a massive star to collapse into a black hole?
+The periodic table organizes elements by their
+A covalent bond is formed when two atoms
+The pH scale ranges from 0 to 14, where a value of 7 represents
+The molar mass of water (H2O) is approximately
+Avogadro's number, which represents the number of particles in one mole, is approximately
+What is the chemical symbol for gold?
+How many electrons does a carbon atom have in its outermost shell?
+What type of chemical reaction releases heat into the surrounding environment?
+What is the chemical formula for table salt?
+Which element has the atomic number 1?
+The French Revolution began in 1789 when the
+The construction of the Great Wall of China was primarily intended to
+World War II ended in Europe in May 1945 with the
+The Renaissance, which began in Italy during the 14th century, was characterized by
+The printing press, invented by Johannes Gutenberg around 1440, fundamentally transformed
+In which year did the Berlin Wall fall?
+Who was the first president of the United States?
+Which empire controlled Egypt before the rise of Rome?
+What ancient wonder of the world was located in Alexandria, Egypt?
+Which treaty officially ended World War I?
+The Amazon River, which flows through the largest tropical rainforest in the world, empties into the
+The Sahara Desert, covering approximately one third of Africa, is the world's largest
+The highest mountain in the world, measured from sea level, is
+The Pacific Ocean, the largest ocean on Earth, covers approximately
+The capital city of Australia, often confused with Sydney, is
+On which continent is the Sahara Desert located?
+What is the longest river in the world?
+Which country has the largest population in the world?
+What is the capital of Canada?
+On which ocean does the Gulf Stream primarily flow?
+In George Orwell's 1984, the ruling party's slogan illustrates the concept of
+Shakespeare's tragedy Hamlet opens with the famous philosophical question
+Marcel Proust's seven-volume novel In Search of Lost Time begins with the narrator
+The literary device that attributes human qualities to non-human objects or ideas is called
+James Joyce's stream of consciousness technique, exemplified in Ulysses, attempts to
+Who wrote the novel Don Quixote?
+In which Shakespeare play does the character Falstaff appear?
+What literary movement was associated with the Lost Generation of American writers?
+Who wrote One Hundred Years of Solitude?
+What is the literary term for a story embedded within another story?
+A binary search tree maintains the property that every node in the left subtree is
+The halting problem, proved undecidable by Alan Turing, demonstrates that no general algorithm can determine
+In asymptotic notation, O(n log n) describes the time complexity of
+The TCP/IP protocol suite, which forms the backbone of the internet, was designed to
+A hash function maps input data of arbitrary size to
+What data structure operates on a LIFO principle?
+What does the acronym CPU stand for?
+Which sorting algorithm has an average time complexity of O(n log n)?
+What is the base of the binary number system?
+What protocol is used to dynamically assign IP addresses to devices on a network?
+The Sapir-Whorf hypothesis proposes that the language we speak influences
+A phoneme is the smallest unit of sound that
+The Romance languages, including French, Spanish, Italian, and Portuguese, all descended from
+Chomsky's theory of universal grammar suggests that the ability to acquire language is
+The International Phonetic Alphabet was designed to
+What is the term for words that sound alike but have different meanings?
+How many official languages does the United Nations recognise?
+What is the name of the linguistic field that studies meaning in language?
+What linguistic feature distinguishes a dialect from a mere accent?
+Which language family includes both English and German?
+The Impressionist movement in painting, pioneered by Monet and Renoir, sought to capture
+The Baroque period in music, associated with Bach and Handel, was marked by
+The ceiling of the Sistine Chapel, painted by Michelangelo between 1508 and 1512, depicts
+Jazz music, which originated in New Orleans in the early 20th century, is characterised by
+The Gothic architectural style, developed in medieval Europe, is recognised by its
+Who painted the Mona Lisa?
+Which composer wrote Symphony No. 9 while deaf?
+What early 20th century artistic movement rejected tradition in favour of experimentation?
+In which city is the Louvre Museum located?
+What musical term describes a gradual decrease in tempo?

@@ -1,0 +1,11 @@
+torch>=2.2.0
+transformers>=4.51.0
+Pillow>=10.0.0
+datasets>=2.18.0
+huggingface_hub>=0.22.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+matplotlib>=3.8.0
+scipy>=1.12.0
+numpy>=1.26.0
+tqdm>=4.66.0

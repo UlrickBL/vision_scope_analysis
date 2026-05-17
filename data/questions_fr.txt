@@ -1,0 +1,100 @@
+Le processus par lequel les cellules se divisent pour produire deux cellules filles identiques s'appelle
+La structure en double hélice de l'ADN a été décrite pour la première fois par
+La photosynthèse transforme le dioxyde de carbone et l'eau en glucose grâce à
+L'organite cellulaire responsable de la production d'ATP est la
+La réplication de l'ADN a lieu pendant la phase appelée
+Quelle est l'unité de base de l'hérédité ?
+Quel organe produit l'insuline dans le corps humain ?
+Quel type de liaison maintient les deux brins d'ADN ensemble ?
+Combien de chromosomes contient une cellule humaine typique ?
+Quel processus permet aux organismes de maintenir un environnement interne stable ?
+La dérivée de sin(x) par rapport à x est
+Un nombre premier est un entier naturel supérieur à 1 qui
+Le théorème de Pythagore stipule que dans un triangle rectangle le carré de l'hypoténuse est égal
+Le théorème fondamental du calcul intégral établit un lien entre
+L'identité d'Euler affirme que e élevé à la puissance i pi est égal à
+Quelle est la somme des angles intérieurs d'un triangle ?
+Combien de côtés possède un hexagone régulier ?
+Quelle est la valeur de pi arrondie à quatre décimales ?
+Quelle est la dérivée de x au carré ?
+Quel est le résultat de l'intégrale de la constante 1 par rapport à x ?
+La vitesse de la lumière dans le vide est d'environ
+La deuxième loi de Newton stipule que la force est égale à la masse multipliée par
+La théorie de la relativité restreinte d'Einstein a introduit le concept que
+La loi de conservation de l'énergie affirme que l'énergie ne peut être ni créée ni
+Le principe d'incertitude, formulé par Heisenberg, stipule qu'on ne peut pas connaître simultanément avec précision à la fois la
+Quelle est l'unité SI de l'intensité du courant électrique ?
+Quelle particule subatomique porte une charge électrique négative ?
+Quelle force maintient les planètes en orbite autour du Soleil ?
+Quelle est la plage approximative de longueurs d'onde de la lumière visible en nanomètres ?
+Quel phénomène provoque l'effondrement d'une étoile massive en trou noir ?
+Le tableau périodique organise les éléments selon leur
+Une liaison covalente se forme lorsque deux atomes
+L'échelle de pH va de 0 à 14, où la valeur 7 représente
+La masse molaire de l'eau est d'environ
+Le nombre d'Avogadro, qui représente le nombre de particules dans une mole, est d'environ
+Quel est le symbole chimique de l'or ?
+Combien d'électrons un atome de carbone possède-t-il sur sa couche externe ?
+Quel type de réaction chimique libère de la chaleur dans l'environnement ?
+Quelle est la formule chimique du sel de table ?
+Quel élément chimique possède le numéro atomique 1 ?
+La Révolution française a débuté en 1789 lorsque le
+La construction de la Grande Muraille de Chine visait principalement à
+La Seconde Guerre mondiale s'est terminée en Europe en mai 1945 avec la
+La Renaissance, qui a commencé en Italie au XIVe siècle, était caractérisée par
+L'imprimerie, inventée par Johannes Gutenberg vers 1440, a profondément transformé
+En quelle année le mur de Berlin est-il tombé ?
+Qui était le premier président des États-Unis ?
+Quel empire contrôlait l'Égypte avant la montée en puissance de Rome ?
+Quelle merveille antique du monde se trouvait à Alexandrie en Égypte ?
+Quel traité a officiellement mis fin à la Première Guerre mondiale ?
+Le fleuve Amazone, qui traverse la plus grande forêt tropicale du monde, se jette dans l'
+Le désert du Sahara, qui couvre environ un tiers de l'Afrique, est le plus grand désert
+La montagne la plus haute du monde, mesurée depuis le niveau de la mer, est le
+L'océan Pacifique, le plus grand océan de la Terre, couvre environ
+La capitale de l'Australie, souvent confondue avec Sydney, est
+Sur quel continent se trouve le désert du Sahara ?
+Quel est le fleuve le plus long du monde ?
+Quel pays possède la population la plus importante du monde ?
+Quelle est la capitale du Canada ?
+Sur quel océan coule principalement le Gulf Stream ?
+Dans 1984 de George Orwell, le slogan du parti au pouvoir illustre le concept de
+La tragédie Hamlet de Shakespeare s'ouvre avec la célèbre question philosophique
+Le roman en sept volumes de Marcel Proust À la recherche du temps perdu commence avec le narrateur qui
+La figure de style qui attribue des qualités humaines à des objets ou des idées non humains s'appelle
+La technique du flux de conscience de James Joyce, illustrée dans Ulysse, tente de
+Qui a écrit le roman Don Quichotte ?
+Dans quelle pièce de Shakespeare le personnage Falstaff apparaît-il ?
+Quel mouvement littéraire était associé à la Génération perdue des écrivains américains ?
+Qui a écrit Cent ans de solitude ?
+Quel terme littéraire désigne une histoire enchâssée dans une autre histoire ?
+Un arbre binaire de recherche maintient la propriété que chaque nœud du sous-arbre gauche est
+Le problème de l'arrêt, prouvé indécidable par Alan Turing, démontre qu'aucun algorithme général ne peut déterminer
+En notation asymptotique, O(n log n) décrit la complexité temporelle de
+La suite de protocoles TCP/IP, qui constitue l'épine dorsale d'Internet, a été conçue pour
+Une fonction de hachage associe des données d'entrée de taille arbitraire à
+Quelle structure de données fonctionne selon le principe LIFO ?
+Que signifie l'acronyme CPU en informatique ?
+Quel algorithme de tri présente une complexité temporelle moyenne de O(n log n) ?
+Quelle est la base du système de numération binaire ?
+Quel protocole est utilisé pour attribuer dynamiquement des adresses IP aux appareils d'un réseau ?
+L'hypothèse de Sapir-Whorf propose que la langue que nous parlons influence
+Un phonème est la plus petite unité sonore qui
+Les langues romanes, dont le français, l'espagnol, l'italien et le portugais, sont toutes issues du
+La théorie de la grammaire universelle de Chomsky suggère que la capacité à acquérir le langage est
+L'Alphabet Phonétique International a été conçu pour
+Quel est le terme désignant des mots qui se prononcent de façon similaire mais ont des significations différentes ?
+Combien de langues officielles les Nations Unies reconnaissent-elles ?
+Quel est le nom du champ linguistique qui étudie le sens dans le langage ?
+Quelle caractéristique linguistique distingue un dialecte d'un simple accent ?
+À quelle famille de langues appartiennent à la fois l'anglais et l'allemand ?
+Le mouvement impressionniste en peinture, dont les pionniers étaient Monet et Renoir, cherchait à capturer
+La période baroque en musique, associée à Bach et Haendel, était marquée par
+Le plafond de la Chapelle Sixtine, peint par Michel-Ange entre 1508 et 1512, représente
+Le jazz, né à la Nouvelle-Orléans au début du XXe siècle, est caractérisé par
+Le style architectural gothique, développé dans l'Europe médiévale, se reconnaît à ses
+Qui a peint la Joconde ?
+Quel compositeur a écrit la Symphonie n° 9 alors qu'il était sourd ?
+Quel mouvement artistique du début du XXe siècle a rejeté la tradition au profit de l'expérimentation ?
+Dans quelle ville se trouve le musée du Louvre ?
+Quel terme musical décrit une diminution progressive du tempo ?
