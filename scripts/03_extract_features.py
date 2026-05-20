@@ -20,6 +20,7 @@ Usage:
 import argparse
 import pathlib
 import torch
+from PIL import Image
 from tqdm import tqdm
 from huggingface_hub import snapshot_download
 from transformers import AutoProcessor, AutoModelForImageTextToText
@@ -91,25 +92,12 @@ def remove_hooks(hooks: list) -> None:
 # ── Input preparation ─────────────────────────────────────────────────────────
 
 def build_text_inputs(text: str, processor, device):
-    messages = [{"role": "user", "content": [{"type": "text", "text": text}]}]
-    return processor.apply_chat_template(
-        messages,
-        add_generation_prompt=True,
-        tokenize=True,
-        return_dict=True,
-        return_tensors="pt",
-    ).to(device)
+    return processor(text=text, return_tensors="pt").to(device)
 
 
 def build_image_inputs(img_path: pathlib.Path, processor, device):
-    messages = [{"role": "user", "content": [{"type": "image", "url": img_path.as_uri()}]}]
-    return processor.apply_chat_template(
-        messages,
-        add_generation_prompt=True,
-        tokenize=True,
-        return_dict=True,
-        return_tensors="pt",
-    ).to(device)
+    image = Image.open(img_path)
+    return processor(images=image, return_tensors="pt").to(device)
 
 
 # ── Token pooling ─────────────────────────────────────────────────────────────
