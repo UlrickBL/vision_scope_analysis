@@ -22,6 +22,7 @@ import pathlib
 import torch
 from PIL import Image
 from tqdm import tqdm
+from datasets import load_dataset
 from huggingface_hub import snapshot_download
 from transformers import AutoProcessor, AutoModelForImageTextToText
 
@@ -95,8 +96,7 @@ def build_text_inputs(text: str, processor, device):
     return processor(text=text, return_tensors="pt").to(device)
 
 
-def build_image_inputs(img_path: pathlib.Path, processor, device):
-    image = Image.open(img_path)
+def build_image_inputs(image: Image.Image, processor, device):
     return processor(images=image, return_tensors="pt").to(device)
 
 
@@ -129,16 +129,8 @@ def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor) 
 # ── Dataset iterator ──────────────────────────────────────────────────────────
 
 def iter_prompts():
-    for lang, fname in [("en", "questions_en.txt"), ("fr", "questions_fr.txt")]:
-        lines = (DATA_DIR / fname).read_text(encoding="utf-8").strip().splitlines()
-        for idx, text in enumerate(lines):
-            yield {
-                "id": f"{idx:03d}_{lang}",
-                "language": lang,
-                "topic": TOPICS[idx // 10],
-                "text": text,
-                "image_path": IMG_DIR / f"{idx:03d}_{lang}.png",
-            }
+    ds = load_dataset("UlrickBL/vision_scope_prompts", split="train")
+    yield from ds
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -192,7 +184,7 @@ def main() -> None:
 
             # IMAGE pass
             captured.clear()
-            inputs = build_image_inputs(record["image_path"], processor, model_device)
+            inputs = build_image_inputs(record["image"], processor, model_device)
             model(**inputs)
             all_residuals["image"][pid] = last_token_residuals(captured, inputs["attention_mask"])
 
