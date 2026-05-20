@@ -55,10 +55,11 @@ def load_model(device: str):
     model.eval()
     processor = AutoProcessor.from_pretrained(MODEL_ID)
 
-    assert hasattr(model, "model") and hasattr(model.model, "layers"), \
-        "Cannot find model.model.layers — hook path invalid for this model version."
-    assert len(model.model.layers) == N_LAYERS, \
-        f"Expected {N_LAYERS} layers, got {len(model.model.layers)}"
+    assert hasattr(model, "model") and hasattr(model.model, "language_model") \
+        and hasattr(model.model.language_model, "layers"), \
+        "Cannot find model.model.language_model.layers — hook path invalid for this model version."
+    assert len(model.model.language_model.layers) == N_LAYERS, \
+        f"Expected {N_LAYERS} layers, got {len(model.model.language_model.layers)}"
     print(f"Model ready. {N_LAYERS} transformer layers confirmed.")
     return model, processor
 
@@ -76,7 +77,7 @@ def register_hooks(model) -> tuple[dict, list]:
         return hook
 
     hooks = [
-        model.model.layers[i].register_forward_hook(make_hook(i))
+        model.model.language_model.layers[i].register_forward_hook(make_hook(i))
         for i in range(N_LAYERS)
     ]
     return captured, hooks

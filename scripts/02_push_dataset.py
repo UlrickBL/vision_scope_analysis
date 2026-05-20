@@ -45,7 +45,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--repo",
-        default="YOUR_HF_USERNAME/vision_scope_prompts",
+        default="UlrickBL/vision_scope_prompts",
         help="HuggingFace repo id to push to, e.g. myname/vision_scope_prompts",
     )
     parser.add_argument("--private", action="store_true", help="Make the dataset private")
