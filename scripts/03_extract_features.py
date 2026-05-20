@@ -97,7 +97,8 @@ def build_text_inputs(text: str, processor, device):
 
 
 def build_image_inputs(image: Image.Image, processor, device):
-    return processor(images=image, return_tensors="pt").to(device)
+    text = f"<|vision_start|>{processor.image_token}<|vision_end|>"
+    return processor(text=text, images=image, return_tensors="pt").to(device)
 
 
 # ── Token pooling ─────────────────────────────────────────────────────────────
