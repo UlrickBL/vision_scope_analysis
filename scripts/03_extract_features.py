@@ -122,7 +122,7 @@ def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor) 
     """residual: (2048,) float32 → sparse acts (32768,) float32, top-50 nonzero."""
     pre_acts = residual @ W_enc.T + b_enc
     topk_vals, topk_idx = pre_acts.topk(TOP_K)
-    sparse = torch.zeros(SAE_D, dtype=torch.float32)
+    sparse = torch.zeros(SAE_D, dtype=torch.float32, device=residual.device)
     sparse[topk_idx] = topk_vals
     return sparse
 
