@@ -1,8 +1,3 @@
-"""
-Render each text prompt as a clean PNG image.
-Output: data/images/{idx:03d}_{lang}.png for all 200 prompts.
-"""
-
 import pathlib
 import textwrap
 from PIL import Image, ImageDraw, ImageFont
@@ -12,9 +7,9 @@ DATA_DIR = ROOT / "data"
 IMG_DIR = DATA_DIR / "images"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
-PATCH_SIZE = 16       # Qwen3.5 vision encoder patch size
-MIN_W = 1120          # divisible by patch size, fits ~70 chars at font 28
-MIN_H = 224           # minimum height, also divisible by patch size
+PATCH_SIZE = 16      
+MIN_W = 1120         
+MIN_H = 224         
 FONT_SIZE = 28
 PADDING = 24
 WRAP_WIDTH = 68

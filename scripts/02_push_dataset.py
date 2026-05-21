@@ -1,10 +1,3 @@
-"""
-Assemble a HuggingFace Dataset from text prompts + rendered images and push to Hub.
-
-Usage:
-    HF_TOKEN=<your_token> python scripts/02_push_dataset.py --repo YOUR_HF_USERNAME/vision_scope_prompts
-"""
-
 import argparse
 import pathlib
 from PIL import Image

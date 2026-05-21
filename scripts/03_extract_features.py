@@ -1,22 +1,3 @@
-"""
-Extract SAE feature activations for all prompts × 2 modalities (text / image).
-
-Steps:
-  1. Load Qwen3.5-2B-Base with AutoModelForImageTextToText
-  2. Register forward hooks on all 24 transformer layers
-  3. For each prompt: run text pass and image pass, capture residuals at last token
-  4. Apply SAE layer-by-layer (one SAE at a time to save GPU memory)
-  5. Save results/features/layer{N:02d}_{text,image}.pt
-
-Prerequisites:
-  - pip install -r requirements.txt
-  - Run scripts/01_create_images.py first
-  - ~8 GB GPU VRAM recommended; ~15 GB free disk (model + SAE checkpoints)
-
-Usage:
-    python scripts/03_extract_features.py [--layers 0-23] [--device cuda]
-"""
-
 import argparse
 import pathlib
 import torch
@@ -42,9 +23,6 @@ SAE_REPO = "Qwen/SAE-Res-Qwen3.5-2B-Base-W32K-L0_50"
 SAE_D = 32768
 TOP_K = 50
 
-
-# ── Model loading ─────────────────────────────────────────────────────────────
-
 def load_model(device: str):
     print(f"Loading {MODEL_ID} ...")
     model = AutoModelForImageTextToText.from_pretrained(
@@ -64,9 +42,6 @@ def load_model(device: str):
         f"Expected {N_LAYERS} layers, got {len(model.model.language_model.layers)}"
     print(f"Model ready. {N_LAYERS} transformer layers confirmed.")
     return model, processor
-
-
-# ── Forward hooks ─────────────────────────────────────────────────────────────
 
 def register_hooks(model) -> tuple[dict, list]:
     captured: dict[int, torch.Tensor] = {}
@@ -89,9 +64,6 @@ def remove_hooks(hooks: list) -> None:
     for h in hooks:
         h.remove()
 
-
-# ── Input preparation ─────────────────────────────────────────────────────────
-
 def build_text_inputs(text: str, processor, device):
     return processor(text=text, return_tensors="pt").to(device)
 
@@ -100,8 +72,6 @@ def build_image_inputs(image: Image.Image, processor, device):
     text = f"<|vision_start|>{processor.image_token}<|vision_end|>"
     return processor(text=text, images=image, return_tensors="pt").to(device)
 
-
-# ── Token pooling ─────────────────────────────────────────────────────────────
 
 def last_token_residuals(captured: dict, attention_mask: torch.Tensor) -> dict[int, torch.Tensor]:
     last_idx = attention_mask[0].nonzero()[-1].item()
@@ -115,9 +85,6 @@ def mean_token_residuals(captured: dict, attention_mask: torch.Tensor) -> dict[i
         for layer in range(N_LAYERS)
     }
 
-
-# ── SAE application ───────────────────────────────────────────────────────────
-
 def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor) -> torch.Tensor:
     """residual: (2048,) float32 → sparse acts (32768,) float32, top-50 nonzero."""
     pre_acts = residual @ W_enc.T + b_enc
@@ -126,15 +93,9 @@ def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor) 
     sparse[topk_idx] = topk_vals
     return sparse
 
-
-# ── Dataset iterator ──────────────────────────────────────────────────────────
-
 def iter_prompts():
     ds = load_dataset("UlrickBL/vision_scope_prompts", split="train")
     yield from ds
-
-
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def parse_layer_range(s: str) -> list[int]:
     if "-" in s:
@@ -170,7 +131,6 @@ def main() -> None:
     if args.n is not None:
         prompts = prompts[: args.n]
 
-    # ── Phase 1: forward passes — collect all residuals ───────────────────────
     print(f"\nRunning forward passes for {len(prompts)} prompts × 2 modalities ...")
     all_residuals: dict[str, dict[str, dict[int, torch.Tensor]]] = {
         "text": {},
@@ -200,7 +160,6 @@ def main() -> None:
     remove_hooks(hooks)
     print("Forward passes complete.")
 
-    # ── Phase 2: SAE application, one layer at a time ─────────────────────────
     all_ids = [r["id"] for r in prompts]
 
     print("\nApplying SAE layer by layer ...")

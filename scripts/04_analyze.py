@@ -1,23 +1,3 @@
-"""
-Compute similarity metrics between text and image SAE feature activations,
-then produce plots showing layer-by-layer convergence.
-
-Metrics per (prompt, layer):
-  - Jaccard similarity of top-50 active feature sets
-  - Cosine similarity of full 32K sparse vectors
-  - Spearman rank correlation over the union of top-50 features
-
-Outputs:
-  results/analysis_results.parquet
-  results/plots/convergence_summary.png
-  results/plots/metrics_by_language.png
-  results/plots/topic_heatmap.png
-  results/plots/early_vs_late_boxplot.png
-
-Usage:
-    python scripts/04_analyze.py
-"""
-
 import pathlib
 import torch
 import numpy as np
@@ -39,9 +19,6 @@ TOPICS = [
 TOP_K = 50
 N_LAYERS = 24
 
-
-# ── Metrics ───────────────────────────────────────────────────────────────────
-
 def jaccard_topk(a: torch.Tensor, b: torch.Tensor, k: int = TOP_K) -> float:
     ia = set(a.topk(k).indices.tolist())
     ib = set(b.topk(k).indices.tolist())
@@ -61,8 +38,6 @@ def spearman_topk(a: torch.Tensor, b: torch.Tensor, k: int = TOP_K) -> float:
     return float(rho) if not np.isnan(rho) else 0.0
 
 
-# ── Data loading ──────────────────────────────────────────────────────────────
-
 def load_layer_pair(layer: int) -> tuple[dict, dict]:
     text_path  = FEAT_DIR / f"layer{layer:02d}_text.pt"
     image_path = FEAT_DIR / f"layer{layer:02d}_image.pt"
@@ -79,9 +54,6 @@ def pid_to_meta(pid: str) -> tuple[int, str, str]:
     idx = int(idx_s)
     topic = TOPICS[idx // 10]
     return idx, lang, topic
-
-
-# ── Analysis ──────────────────────────────────────────────────────────────────
 
 def compute_metrics() -> pd.DataFrame:
     available_layers = sorted(
@@ -117,7 +89,6 @@ def compute_metrics() -> pd.DataFrame:
     return pd.DataFrame(records)
 
 
-# ── Plotting ──────────────────────────────────────────────────────────────────
 
 COLORS = {"jaccard": "#2196F3", "cosine": "#4CAF50", "spearman": "#FF9800"}
 METRICS = ["jaccard", "cosine", "spearman"]
@@ -228,9 +199,6 @@ def plot_early_vs_late(df: pd.DataFrame) -> None:
     plt.savefig(PLOT_DIR / "early_vs_late_boxplot.png", dpi=150, bbox_inches="tight")
     plt.close()
     print("  Saved early_vs_late_boxplot.png")
-
-
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main() -> None:
     print("Computing metrics ...")
