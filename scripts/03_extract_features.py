@@ -148,6 +148,8 @@ def main() -> None:
     parser.add_argument("--layers", default="0-23",
                         help="Layer range to extract, e.g. '0-23' or '0-4'")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--n", type=int, default=None,
+                        help="Subsample N prompts for quick testing (default: all 200)")
     args = parser.parse_args()
 
     target_layers = parse_layer_range(args.layers)
@@ -165,6 +167,8 @@ def main() -> None:
     captured, hooks = register_hooks(model)
 
     prompts = list(iter_prompts())
+    if args.n is not None:
+        prompts = prompts[: args.n]
 
     # ── Phase 1: forward passes — collect all residuals ───────────────────────
     print(f"\nRunning forward passes for {len(prompts)} prompts × 2 modalities ...")
