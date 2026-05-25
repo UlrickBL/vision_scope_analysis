@@ -19,13 +19,11 @@ MODEL_CONFIGS = {
     "2b": {
         "model_id": "Qwen/Qwen3.5-2B-Base",
         "sae_repo": "Qwen/SAE-Res-Qwen3.5-2B-Base-W32K-L0_50",
-        "sae_d":    32768,
         "top_k":    50,
     },
     "27b": {
         "model_id": "Qwen/Qwen3.5-27B",
         "sae_repo": "Qwen/SAE-Res-Qwen3.5-27B-W80K-L0_100",
-        "sae_d":    80000,
         "top_k":    100,
     },
 }
@@ -96,10 +94,10 @@ def last_token_residuals(captured: dict, attention_mask: torch.Tensor, n_layers:
 
 # ── SAE application ───────────────────────────────────────────────────────────
 
-def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor, top_k: int, sae_d: int) -> torch.Tensor:
+def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor, top_k: int) -> torch.Tensor:
     pre_acts = residual @ W_enc.T + b_enc
     topk_vals, topk_idx = pre_acts.topk(top_k)
-    sparse = torch.zeros(sae_d, dtype=torch.float32, device=residual.device)
+    sparse = torch.zeros(pre_acts.shape[0], dtype=torch.float32, device=residual.device)
     sparse[topk_idx] = topk_vals
     return sparse
 
@@ -199,7 +197,7 @@ def main() -> None:
         for pid in all_ids:
             for modality in ("text", "image"):
                 res = all_residuals[modality][pid][layer].to(sae_device)
-                sparse = apply_sae(res, W_enc, b_enc, cfg["top_k"], cfg["sae_d"])
+                sparse = apply_sae(res, W_enc, b_enc, cfg["top_k"])
                 results[modality][pid] = sparse.cpu()
 
         torch.save(results["text"],  feat_dir / f"layer{layer:02d}_text.pt")
