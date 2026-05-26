@@ -1,16 +1,12 @@
 # How Multimodal is Qwen3.5 ? Probing Text-Image Convergence with SAE Features
 
-_Two experiments on the Qwen3.5 model family - a small base model and a larger instruct model - using Sparse Autoencoders to look inside the residual stream layer by layer._
-
----
+_Two experiments on the Qwen3.5 model family (a small base model and a larger instruct model) using Sparse Autoencoders to look inside the residual stream layer by layer._
 
 ## TL;DR
 
 I sent 200 prompts through two Qwen3.5 models - each twice, once as plain text and once as a rendered image of the same text - and measured whether the model activates the same SAE features at each transformer layer.
 
-Two experiments, one headline finding: **text and image representations stay largely separate throughout both models. Instruction tuning dramatically improves geometric alignment (cosine), but leaves the discrete feature overlap (Jaccard) almost unchanged.**
-
----
+Two experiments with the output for tested models: **text and image representations stay largely separate throughout both models. Instruction tuning dramatically improves geometric alignment (cosine), but leaves the discrete feature overlap (Jaccard) almost unchanged.**
 
 ## Background
 
@@ -28,8 +24,6 @@ The [Qwen Scope](https://huggingface.co/Qwen/SAE-Res-Qwen3.5-2B-Base-W32K-L0_50)
 
 This gives us a cleaner comparison than raw activations: instead of asking "are these vectors similar?", we ask "do they activate the same features?" which is a more interpretable signal that ignores entangled directions in activation space.
 
----
-
 ## Why these two models
 
 The Qwen Scope project has released SAE checkpoints for different variants of Qwen3.5 and I selected these 2 :
@@ -42,8 +36,6 @@ The Qwen Scope project has released SAE checkpoints for different variants of Qw
 I would have preferred to compare base-vs-base or instruct-vs-instruct to isolate the effect of post-training. That is not possible with currently public checkpoints: the 27B-Base is not on HuggingFace, and there is no instruct SAE for the 2B. Running the full 27B pipeline - model weights (~55 GB) plus SAE checkpoints for all 64 layers (~12 KB each, 64 of them) - costs roughly **$2/h on a GPU**, making systematic ablations expensive.
 
 The two experiments therefore conflate scale (2B vs 27B) with training regime (base vs instruct). Let's keep this in mind throughout and avoid overclaiming about which factor drives the differences.
-
----
 
 ## Method
 
