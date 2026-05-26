@@ -131,7 +131,7 @@ Same experiment, 64-layer instruct model, 80K-feature SAE with top-100.
 
 The picture splits dramatically along metric lines.
 
-**Cosine is dramatically higher and more active.** Where the 2B-Base's cosine collapsed after layer 0 and barely recovered, the 27B-Instruct sustains ~20–30% through the middle layers and produces multiple prominent spikes - around L12–13, L20, L48–50, and a peak at L60 reaching ~0.65. The model's text and image representations are geometrically much more aligned throughout the full depth.
+**Cosine is dramatically higher and more active.** Where the 2B-Base's cosine collapsed after layer 0 and barely recovered, the 27B-Instruct sustains ~20–30% through the middle layers and produces multiple prominent spikes - around L12–13, L48–50, and a peak at L57 reaching ~0.65. The model's text and image representations are geometrically much more aligned throughout the full depth.
 
 **Jaccard stays similarly low.** The specific features that fire remain mostly modality-specific. Early layers start slightly higher (~5% vs ~2%), but late-layer Jaccard peaks at only ~8% - actually below the 2B-Base's ~10%. The increase from early to late is a smaller delta than in the 2B (5%→8% vs 2%→10%).
 
