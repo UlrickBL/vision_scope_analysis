@@ -72,6 +72,8 @@ This produces one sparse vector per (prompt, modality, layer). We then compare t
 
 **Random baseline:** two independent random sparse vectors with top-50 active out of 32,768 features have an expected Jaccard of ~0.15%. Anything above ~5% is meaningful signal.
 
+Spearman correlation did not plot well so just ignore this part of the plots.
+
 ## Experiment 1 - Qwen3.5-2B-Base
 
 ### Overall convergence
