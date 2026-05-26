@@ -33,7 +33,7 @@ The Qwen Scope project has released SAE checkpoints for different variants of Qw
 | `Qwen/Qwen3.5-2B-Base` | 24     | 32,768       | 50    | Base model SAE     |
 | `Qwen/Qwen3.5-27B`     | 64     | 80,000       | 100   | Instruct model SAE |
 
-I would have preferred to compare base-vs-base or instruct-vs-instruct to isolate the effect of post-training. That is not possible with currently public checkpoints: the 27B-Base is not on HuggingFace, and there is no instruct SAE for the 2B. Running the full 27B pipeline - model weights (~55 GB) plus SAE checkpoints for all 64 layers (~12 KB each, 64 of them) - costs roughly **$2/h on a GPU**, making systematic ablations expensive.
+I would have preferred to compare base-vs-base or instruct-vs-instruct to isolate the effect of post-training. That is not possible with currently public checkpoints: the 27B-Base is not on HuggingFace, and there is no instruct SAE for the 2B. Running the full 27B pipeline - model weights (~55 GB) plus SAE checkpoints for all 64 layers (~3.5 GB each, 64 of them) - costs roughly **$2/h on a GPU**, making systematic ablations expensive.
 
 The two experiments therefore conflate scale (2B vs 27B) with training regime (base vs instruct). Let's keep this in mind throughout and avoid overclaiming about which factor drives the differences.
 
@@ -71,8 +71,6 @@ This produces one sparse vector per (prompt, modality, layer). We then compare t
 | **Cosine**  | Do the activations point in the same direction? - full sparse vector |
 
 **Random baseline:** two independent random sparse vectors with top-50 active out of 32,768 features have an expected Jaccard of ~0.15%. Anything above ~5% is meaningful signal.
-
----
 
 ## Experiment 1 - Qwen3.5-2B-Base
 
