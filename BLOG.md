@@ -121,8 +121,6 @@ The heatmap is almost entirely red. Every topic - STEM or humanities, abstract o
 
 The late-layer distribution is clearly shifted up and wider than early layers. Some prompts reach Jaccard ~0.3, meaning the model genuinely builds a shared representation for those inputs. The median stays below 0.1.
 
----
-
 ## Experiment 2 - Qwen3.5-27B (Instruct)
 
 Same experiment, 64-layer instruct model, 80K-feature SAE with top-100.
@@ -155,8 +153,6 @@ Still almost entirely red. Slightly more heterogeneous than the 2B-Base in early
 
 The early-to-late shift in Jaccard is real but small: L0–4 median ~5%, L59–63 median ~7–8%. The 2B-Base showed a more pronounced progression (2%→10%); here the model starts higher but plateaus earlier.
 
----
-
 ## What the comparison reveals
 
 Putting the two experiments side by side:
@@ -186,16 +182,12 @@ An analogy: two speakers who have learned to agree on every topic (high cosine) 
 
 This is in contrast to models that incorporate vision from the very beginning of pretraining. Kimi K2.5 is trained with joint text-vision pretraining and joint text-vision reinforcement learning, both modalities are present throughout the full training signal (or at least way sooner), which forces the model to develop shared representations from the ground up. DeepSeek "thinking with vision", with its multimodal reasoning approach, similarly integrates visual thinking at the pretraining stage rather than treating it as an add-on. The hypothesis is that when both modalities are co-present during the phase where features are first formed, the model has an incentive to build modality-agnostic features - features that are useful regardless of whether the input arrived as pixels or tokens. Plugging vision in post-hoc means those features are already crystallised and the model can only reroute, not restructure. The persistent low Jaccard we observe across both Qwen3.5 models - even the large instruct one - is consistent with this story: the feature basis was locked in before vision arrived.
 
----
-
 ## Limitations
 
 - **Entangled variables.** The two models differ in scale and post-training simultaneously. Any comparison between them is observational.
 - **Last-token pooling.** Image inputs produce ~300 patch tokens; text inputs ~15–30 tokens. Both are pooled to the final token position. The last token has attended over very different context lengths.
 - **200 samples.** Sufficient for layer-level trends; not for per-topic statistical claims.
 - **Rendered text images.** A controlled setup (soft OCR), not natural image distribution.
-
----
 
 ## Conclusion
 
@@ -206,8 +198,6 @@ What does change is **geometric alignment**: the 27B-Instruct sustains substanti
 This dissociation between cosine and Jaccard may be the most practically relevant finding. If you care about whether the model _generalises knowledge and behavior_ across modalities - which cosine better approximates - the instruct model looks meaningfully better. If you care about whether the model _uses the same internal circuits_ for both modalities - which Jaccard captures - the answer is still mostly no, in both models.
 
 The natural follow-up experiments: a 27B-Base SAE to isolate scale from instruction tuning, and a model trained with joint text-vision pretraining (as in Deepseek or Kimi K2.5) to test whether the Jaccard gap can be closed at the pretraining stage rather than patched in post-training.
-
----
 
 ## References
 
