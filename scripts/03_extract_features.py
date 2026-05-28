@@ -28,9 +28,6 @@ MODEL_CONFIGS = {
     },
 }
 
-
-# ── Model loading ─────────────────────────────────────────────────────────────
-
 def load_model(model_id: str, device: str):
     print(f"Loading {model_id} ...")
     model = AutoModelForImageTextToText.from_pretrained(
@@ -49,9 +46,6 @@ def load_model(model_id: str, device: str):
     n_layers = len(model.model.language_model.layers)
     print(f"Model ready. {n_layers} transformer layers detected.")
     return model, processor, n_layers
-
-
-# ── Forward hooks ─────────────────────────────────────────────────────────────
 
 def register_hooks(model, n_layers: int) -> tuple[dict, list]:
     captured: dict[int, torch.Tensor] = {}
@@ -73,9 +67,6 @@ def remove_hooks(hooks: list) -> None:
     for h in hooks:
         h.remove()
 
-
-# ── Input preparation ─────────────────────────────────────────────────────────
-
 def build_text_inputs(text: str, processor, device):
     return processor(text=text, return_tensors="pt").to(device)
 
@@ -84,15 +75,9 @@ def build_image_inputs(image: Image.Image, processor, device):
     text = f"<|vision_start|>{processor.image_token}<|vision_end|>"
     return processor(text=text, images=image, return_tensors="pt").to(device)
 
-
-# ── Token pooling ─────────────────────────────────────────────────────────────
-
 def last_token_residuals(captured: dict, attention_mask: torch.Tensor, n_layers: int) -> dict[int, torch.Tensor]:
     last_idx = attention_mask[0].nonzero()[-1].item()
     return {layer: captured[layer][0, last_idx, :] for layer in range(n_layers)}
-
-
-# ── SAE application ───────────────────────────────────────────────────────────
 
 def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor, top_k: int) -> torch.Tensor:
     pre_acts = residual @ W_enc.T + b_enc
@@ -102,14 +87,9 @@ def apply_sae(residual: torch.Tensor, W_enc: torch.Tensor, b_enc: torch.Tensor, 
     return sparse
 
 
-# ── Dataset iterator ──────────────────────────────────────────────────────────
-
 def iter_prompts():
     ds = load_dataset("UlrickBL/vision_scope_prompts", split="train")
     yield from ds
-
-
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def parse_layer_range(s: str) -> list[int]:
     if "-" in s:
